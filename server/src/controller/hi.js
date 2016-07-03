@@ -1,4 +1,4 @@
-
+//var dao = require('./dao');
 
 module.exports = {
     hi: hi
@@ -7,4 +7,8 @@ module.exports = {
 
 function hi () {
     console.log('hi');
+}
+
+function uodate(req, res) {
+    console.log
 }
