@@ -25,6 +25,7 @@ var app = express();
 var server = http.createServer(app);
 require('./config/express').default(app);
 require('./routes').default(app);
+app.use('/banks', require('./src/routes/api_v1'));
 
 // Start server
 function startServer() {
