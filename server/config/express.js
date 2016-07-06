@@ -13,11 +13,12 @@ import methodOverride from 'method-override';
 import cookieParser from 'cookie-parser';
 import errorHandler from 'errorhandler';
 import path from 'path';
-import lusca from 'lusca';
 import config from './environment';
 import session from 'express-session';
 import connectMongo from 'connect-mongo';
 import mongoose from 'mongoose';
+import lusca from 'lusca';
+import csrf from 'csurf';
 var MongoStore = connectMongo(session);
 
 export default function(app) {
@@ -61,11 +62,10 @@ export default function(app) {
    * Lusca - express server security
    * https://github.com/krakenjs/lusca
    */
+   var csrfProtection = csrf({ cookie: true, angular: true })
   if (env !== 'test' && !process.env.SAUCE_USERNAME) {
     app.use(lusca({
-      csrf: {
-        angular: true
-      },
+      csrfProtection,
       xframe: 'SAMEORIGIN',
       hsts: {
         maxAge: 31536000, //1 year, in seconds
