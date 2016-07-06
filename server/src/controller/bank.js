@@ -10,8 +10,8 @@ module.exports = {
     getById: getById,
     create: create,
     deleteById: deleteById,
-    updateById: updateById,
-    createGet: createGet
+    updateById: updateById
+
 };
 
 
@@ -57,11 +57,3 @@ function updateById(req, res) {
     });
 }
 
-function createGet(req, res) {
-    var data = req.body;
-     BankDao.createGet(data).then(function (data) {
-        res.status(200).send(data);
-    }).catch(function (error) {
-        res.status(error.status).send(error.data);
-    });
-}

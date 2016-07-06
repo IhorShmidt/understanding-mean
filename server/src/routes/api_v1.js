@@ -7,8 +7,8 @@ var middleware = require('require-all')(path.join(__dirname, "../middleware"));
 
 
 
-router.post('/bank', controller.bank.create);
-
-router.get('/bank', controller.bank.getAll);
+router.post('/create/', controller.bank.create);
+// router.get('/create/', controller.bank.create);
+router.get('/', controller.bank.getAll);
 
 module.exports = router;
